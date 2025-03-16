@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>设置 - iOS App 原型</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/app.js"></script>
+    <style>
+        .ios-status-bar {
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .ios-tab-bar {
+            height: 83px;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .iphone15-container {
+            width: 393px;
+            height: 852px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .main-content {
+            height: calc(100% - 127px);
+            overflow-y: auto;
+        }
+
+        /* 自定义开关样式 */
+        .toggle-switch {
+            width: 51px;
+            height: 31px;
+            background-color: #e4e4e7;
+            border-radius: 31px;
+            padding: 2px;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+
+        .toggle-switch.active {
+            background-color: #22c55e;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            background-color: white;
+            display: block;
+            transform: translateX(0);
+            transition: transform 0.2s;
+        }
+
+        .toggle-switch.active::after {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="iphone15-container bg-white shadow-2xl rounded-[55px]">
+        <!-- 状态栏 -->
+        <div class="ios-status-bar flex items-center justify-between px-5">
+            <div class="flex items-center space-x-1">
+                <span class="text-sm font-medium">9:41</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5z"/>
+                    <path d="M8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7z"/>
+                    <path d="M14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                </svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M17.778 8.222c-4.296-4.296-11.26-4.296-15.556 0A1 1 0 01.808 6.808c5.076-5.077 13.308-5.077 18.384 0a1 1 0 01-1.414 1.414z"/>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content bg-gray-50">
+            <!-- 顶部导航 -->
+            <div class="bg-white p-4 flex items-center">
+                <a href="profile.html" class="flex items-center text-blue-500">
+                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </a>
+                <h1 class="text-lg font-semibold flex-1 text-center">设置</h1>
+            </div>
+
+            <!-- 设置选项 -->
+            <div class="mt-4">
+                <!-- 账号设置 -->
+                <div class="bg-white mb-4">
+                    <div class="flex items-center justify-between p-4 border-b">
+                        <span>账号与安全</span>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                    <div class="flex items-center justify-between p-4">
+                        <span>隐私设置</span>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 通知设置 -->
+                <div class="bg-white mb-4">
+                    <div class="flex items-center justify-between p-4 border-b">
+                        <span>通知设置</span>
+                        <div class="flex items-center">
+                            <label class="toggle-switch" role="switch">
+                                <input type="checkbox" class="notification-toggle sr-only" checked>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-4">
+                        <span>声音与振动</span>
+                        <label class="toggle-switch" role="switch">
+                            <input type="checkbox" class="sr-only" checked>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 通用设置 -->
+                <div class="bg-white mb-4">
+                    <div class="flex items-center justify-between p-4 border-b">
+                        <span>清除缓存</span>
+                        <div class="flex items-center">
+                            <span class="text-gray-400 mr-2 cache-size">23.5MB</span>
+                            <button class="clear-cache-btn text-blue-500">清除</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-4 border-b">
+                        <span>关于我们</span>
+                        <div class="flex items-center">
+                            <span class="text-gray-400 mr-2">版本 1.0.0</span>
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-4">
+                        <span>检查更新</span>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 退出登录按钮 -->
+                <div class="px-4 mb-4">
+                    <button class="logout-btn w-full bg-red-500 text-white py-3 rounded-lg font-medium">
+                        退出登录
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Bar -->
+        <div class="ios-tab-bar fixed bottom-0 w-full flex justify-around items-center px-6 border-t border-gray-200">
+            <a href="index.html" class="flex flex-col items-center">
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                <span class="text-xs mt-1 text-gray-400">首页</span>
+            </a>
+            <a href="#" class="flex flex-col items-center">
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <span class="text-xs mt-1 text-gray-400">职位</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center">
+                <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+                <span class="text-xs mt-1 text-blue-500">我的</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // 初始化开关样式
+        document.querySelectorAll('.toggle-switch').forEach(toggle => {
+            const input = toggle.querySelector('input');
+            toggle.classList.toggle('active', input.checked);
+            
+            toggle.addEventListener('click', () => {
+                input.checked = !input.checked;
+                toggle.classList.toggle('active');
+                
+                if (input.classList.contains('notification-toggle')) {
+                    handleNotificationToggle(input);
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
